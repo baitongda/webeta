@@ -1,0 +1,36 @@
+---
+name: 蝉知商城
+code: mall
+type: extension
+copyright: >
+  青岛易软天创网络科技有限公司
+  2015
+site: http://www.chanzhi.org
+author: 'Xiying guan<guanxiying@xirangit.com>'
+abstract: 蝉知商城插件
+desc: >
+  本插件提供：商品属性设置，按照属性设置价格，按照属性搜索功能，并且集成了微信登录和微信支付功能，集成了快递100查询接口，提供短信通知功能。
+install: |
+  1. 通过蝉知的插件管理来进行安装。
+    1.1 使用管理员身份登录蝉知，访问插件管理。
+    1.2 打开获得插件页面，搜索找到本插件。
+    1.3 选择自动安装，按照页面提示即可。
+  2. 手工安装，将代码解压缩，然后将目录拷贝到蝉知对应的目录，比如system拷贝到chanzhi的system。
+releases:
+  1.0:
+    chanzhi:
+      compatible: all
+      incompatible:
+    charge: free
+    date: 2016-04-01
+    conflicts: null
+    depends: null
+    license: 商业软件，非免费软件
+    changelog: |
+      1.微信支付功能
+      2.微信登录功能
+      3.快递跟踪功能（使用kuaidi100接口）
+      4.产品属性设置功能
+      5.产品不同属性的价格设置
+      6.短信通知功能
+      7.新订单通知管理员功能

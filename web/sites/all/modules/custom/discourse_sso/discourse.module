@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Integrate an external Discourse forum into a Drupal site.
+ *
+ * This module performs two basic functions. It monkey patches
+ * Discourse javascript so that it works within a Drupal site,
+ * and it provides a proxy for requests to the Discourse
+ * server so that authentication cookies can be sent.
+ */
+
+
+/**
+ * Implements hook_menu().
+ */
+function discourse_menu() {
+  $forum_root = variable_get('discourse_forum_root');
+  $items = array();
+  $items['admin/config/system/discourse'] = array(
+    'title' => 'Discourse',
+    'description' => 'Configuration for the Discourse module.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('discourse_admin_form'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'includes/discourse_admin.inc',
+  );
+  $items['discourse/sso'] = array(
+      'title' => 'Discourse Login',
+      'page callback' => 'discourse_sso',
+      'access callback' => TRUE,
+      'description' => 'Handle SSO sign in for Discourse.',
+      'type' => MENU_CALLBACK,
+      'file' => 'includes/discourse.sso.inc',
+  );
+
+  return $items;
+}
